@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.unfold.unfoldbff.utils.Constants.PROD_URL;
+
 @RestController
-@CrossOrigin(origins = "https://unfold.fit")
+@CrossOrigin(origins = PROD_URL)
 public class JwtController {
     @Autowired
     private JwtService jwtService;

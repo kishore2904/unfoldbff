@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.unfold.unfoldbff.utils.Constants.PROD_URL;
+
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = PROD_URL)
 public class UserController {
     @Autowired
     private final UsersService usersService;
