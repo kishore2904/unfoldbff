@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.unfold.unfoldbff.utils.Constants.PROD_URL;
+
 @RestController
 @RequestMapping(value = "/rest/unfold")
-@CrossOrigin(value = "https://unfold.fit")
+@CrossOrigin(value = PROD_URL)
 public class ProductController {
 
     private final ProductServiceImpl productServiceImpl;
