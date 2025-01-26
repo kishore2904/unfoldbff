@@ -39,7 +39,7 @@ public class ProductServiceImpl {
 
         category.setProducts(productList);
 
-        categoryRepository.save(category);
+        productRepository.saveAll(productList);
 
     }
 
@@ -64,5 +64,10 @@ public class ProductServiceImpl {
                 () -> new RuntimeException("Category Doesn't exist")
         );
         return category;
+    }
+
+    public List<ProductDto> getAllProducts() {
+        List<Product> productList = productRepository.findAll();
+        return productMapper.convertToProductDtoList(productList);
     }
 }

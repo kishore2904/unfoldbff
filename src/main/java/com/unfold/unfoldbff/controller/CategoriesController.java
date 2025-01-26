@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/rest/unfold")
-@CrossOrigin(value = "http://localhost:4200")
+@CrossOrigin(value = "https://unfold.fit")
 public class CategoriesController {
 
     private final CategoryServiceImpl categoryServiceImpl;
@@ -21,7 +21,6 @@ public class CategoriesController {
     }
 
     @GetMapping("/allCategories")
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<List<CategoryDto>> getAllCategories() {
         return ResponseEntity.ok(categoryServiceImpl.findAllCategories());
     }
@@ -45,7 +44,7 @@ public class CategoriesController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping(value = "/categories/{deleteId}")
+    @DeleteMapping(value = "/categories/{categoryId}")
     ResponseEntity<Void> deleteCategoryWithProduct(@PathVariable Integer categoryId) {
 
         categoryServiceImpl.deleteCategoryWithProduct(categoryId);
