@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/rest/unfold")
+@RequestMapping(value = "/rest/unfold")
 public class ProductSizeController {
 
     private final ProductSizeServiceImpl productSizeServiceImpl;
@@ -19,13 +19,13 @@ public class ProductSizeController {
         this.productSizeServiceImpl = productSizeServiceImpl;
     }
 
-    @PostMapping(value="/productSize")
+    @PostMapping(value = "/productSize")
     public ResponseEntity<Void> createProductSize(@RequestBody ProductSizeDto productSizeDto) {
         productSizeServiceImpl.create(productSizeDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping(value="/allProductSizes")
+    @GetMapping(value = "/allProductSizes")
     public ResponseEntity<List<ProductSizeDto>> getAllProductSizes() {
         return ResponseEntity.ok(productSizeServiceImpl.getAllProductSizes());
     }
@@ -37,8 +37,8 @@ public class ProductSizeController {
 
     @PutMapping("/{productSizeId}/productSize")
     public ResponseEntity<Void> updateProductSize(@PathVariable Long sizeId,
-        @RequestBody ProductSizeDto productSizeDto) {
-        productSizeServiceImpl.update(sizeId,productSizeDto);
+                                                  @RequestBody ProductSizeDto productSizeDto) {
+        productSizeServiceImpl.update(sizeId, productSizeDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .cors(corsCustomizer -> corsCustomizer.configurationSource(corsConfigurationSource())) // Enable CORS
                 .csrf(csrfCustomizer -> csrfCustomizer.disable()) // Disable CSRF for development
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/authenticate", "/registerNewUser", "/createRole").permitAll() // Public endpoints
+                        .requestMatchers("/authenticate", "/registerNewUser","/rest/unfold/products", "/createRole").permitAll() // Public endpoints
                         .anyRequest().authenticated() // Protect all other endpoints
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(jwtAuthenticationEntryPoint)) // Handle unauthorized requests
@@ -53,7 +53,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:4200"); // Allow frontend
+        configuration.addAllowedOrigin("https://unfold.fit"); // Allow frontend
         configuration.addAllowedMethod("*"); // Allow all HTTP methods
         configuration.addAllowedHeader("*"); // Allow all headers
         configuration.setAllowCredentials(true); // Allow credentials (cookies or authorization headers)

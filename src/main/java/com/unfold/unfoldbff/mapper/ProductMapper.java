@@ -28,4 +28,6 @@ public interface ProductMapper {
     Product convertToProduct(ProductDto productDto);
 
     List<Product> convertToProduct(List<ProductDto> productDtoList);
+
+    List<ProductDto> convertToProductDtoList(List<Product> products);
 }
