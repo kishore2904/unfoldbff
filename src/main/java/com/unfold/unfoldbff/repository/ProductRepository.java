@@ -7,26 +7,31 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     String FIND_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID = """
-        SELECT PRODUCTDETAILS FROM Product PRODUCTDETAILS WHERE
-        PRODUCTDETAILS.productId = :productId AND PRODUCTDETAILS.categoryId = :categoryId
-        """;
+            SELECT PRODUCTDETAILS FROM Product PRODUCTDETAILS WHERE
+            PRODUCTDETAILS.productId = :productId AND PRODUCTDETAILS.categoryId = :categoryId
+            """;
 
     String UPDATE_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID = """
-        UPDATE Product prod SET prod.productName = :productName,
-        prod.productDescription = :productDescription,
-        prod.price = :price, prod.stockQuantity = :stockQuantity,
-        prod.imageUrl = :imageUrl WHERE prod.categoryId = :categoryId
-        AND prod.productId = :productId
-        """;
+            UPDATE Product prod SET prod.productName = :productName,
+            prod.productDescription = :productDescription,
+            prod.price = :price, prod.stockQuantity = :stockQuantity,
+            prod.imageUrl = :imageUrl WHERE prod.categoryId = :categoryId
+            AND prod.productId = :productId
+            """;
 
     String DELETE_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID = """
-        DELETE FROM Product prod WHERE prod.categoryId = :categoryId
-        AND prod.productId = :productId
-        """;
+            DELETE FROM Product prod WHERE prod.categoryId = :categoryId
+            AND prod.productId = :productId
+            """;
+    String SELECT_PRODUCT_BY_CATEGORY_ID = """
+            SELECT PRODUCTDETAILS FROM Product PRODUCTDETAILS WHERE PRODUCTDETAILS.categoryId = :categoryId
+            """;
 
     @Query(value = FIND_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID)
     Product findProductByCategoryIdAndProductId(@Param("categoryId") Integer categoryId,
@@ -46,4 +51,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = DELETE_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID)
     void deleteProductByCategoryAndProductId(@Param("categoryId") Integer categoryId,
                                              @Param("productId") Integer productId);
+
+    @Query(value = SELECT_PRODUCT_BY_CATEGORY_ID)
+    List<Product> findProductByCategoryId(@Param("categoryId") Integer categoryId);
+
 }

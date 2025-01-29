@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/rest/unfold")
+@RequestMapping(value = "/rest/unfold")
 public class CartController {
 
     private final CartServiceImpl cartServiceImpl;
@@ -18,19 +18,19 @@ public class CartController {
         this.cartServiceImpl = cartServiceImpl;
     }
 
-    @GetMapping("/cartProducts/{id}")
-    public ResponseEntity<List<CartDto>> findCartItemsByUserId(@PathVariable Integer userId){
+    @GetMapping("/cartProducts")
+    public ResponseEntity<List<CartDto>> findCartItemsByUserId(@RequestParam Integer userId) {
         return ResponseEntity.ok(cartServiceImpl.getAllCartItemsByUserId(userId));
     }
 
     @PostMapping("/cartProducts")
-    ResponseEntity<Void> saveCategories(@RequestBody CartDto cartDto){
+    ResponseEntity<Void> saveCategories(@RequestBody CartDto cartDto) {
         cartServiceImpl.addProductsOrModifyQuantityOfProductToCart(cartDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping(value = "/cart/{deleteId}")
-    ResponseEntity<Void> deleteByCartId(@PathVariable Integer cartId){
+    @DeleteMapping(value = "/cart/{cartId}")
+    ResponseEntity<Void> deleteByCartId(@PathVariable Integer cartId) {
         cartServiceImpl.delete(cartId);
         return ResponseEntity.noContent().build();
 
