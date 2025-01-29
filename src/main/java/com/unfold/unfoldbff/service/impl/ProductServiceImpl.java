@@ -24,14 +24,14 @@ public class ProductServiceImpl {
     }
 
     public ProductDto getProductBasedOnCategoryIdAndProductId
-            (Integer categoryId,Integer productId){
+            (Integer categoryId, Integer productId) {
 
-        Product product = productRepository.findProductByCategoryIdAndProductId(categoryId,productId);
+        Product product = productRepository.findProductByCategoryIdAndProductId(categoryId, productId);
         return productMapper.convertToProductDto(product);
 
     }
 
-    public void createProductsUnderCategory(Integer categoryId,List<ProductDto> productDtos){
+    public void createProductsUnderCategory(Integer categoryId, List<ProductDto> productDtos) {
 
         Category category = validateCategory(categoryId);
 
@@ -43,19 +43,19 @@ public class ProductServiceImpl {
 
     }
 
-    public void updateProductUnderCategory(Integer categoryId,ProductDto productDto){
+    public void updateProductUnderCategory(Integer categoryId, ProductDto productDto) {
         Category category = validateCategory(categoryId);
-        if(category!=null){
+        if (category != null) {
             Product product = productMapper.convertToProduct(productDto);
-            productRepository.updateProductBasedOnCategoryAndProductId(categoryId,product.getProductId(),
-                    product.getProductName(),product.getProductDescription(),product.getPrice(),
-                    product.getStockQuantity(),product.getImageUrl());
+            productRepository.updateProductBasedOnCategoryAndProductId(categoryId, product.getProductId(),
+                    product.getProductName(), product.getProductDescription(), product.getPrice(),
+                    product.getStockQuantity(), product.getImageUrl());
         }
     }
 
-    public void deleteProductByCategoryAndProductId(Integer categoryId,Integer productId){
+    public void deleteProductByCategoryAndProductId(Integer categoryId, Integer productId) {
 
-        productRepository.deleteProductByCategoryAndProductId(categoryId,productId);
+        productRepository.deleteProductByCategoryAndProductId(categoryId, productId);
 
     }
 
@@ -68,6 +68,11 @@ public class ProductServiceImpl {
 
     public List<ProductDto> getAllProducts() {
         List<Product> productList = productRepository.findAll();
+        return productMapper.convertToProductDtoList(productList);
+    }
+
+    public List<ProductDto> getProductBasedOnCategoryId(Integer categoryId) {
+        List<Product> productList = productRepository.findProductByCategoryId(categoryId);
         return productMapper.convertToProductDtoList(productList);
     }
 }

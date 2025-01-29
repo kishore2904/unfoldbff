@@ -9,7 +9,7 @@ public class ErrorMessage {
 
     public enum ErrorCodeConstants {
         DATA_NOT_FOUND("A001", "UserName Not Found", HttpStatus.NOT_FOUND),
-        USER_NAME_ALREADY_EXIST("A002","User Name Already Exist", HttpStatus.BAD_REQUEST),
+        USER_NAME_ALREADY_EXIST("A002", "Email Already Already Exist", HttpStatus.BAD_REQUEST),
         INVALID_INPUT("A003", "Invalid Input", HttpStatus.BAD_REQUEST);
 
         private final String errorCode;

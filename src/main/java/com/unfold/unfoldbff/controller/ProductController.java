@@ -31,8 +31,16 @@ public class ProductController {
                 productServiceImpl.getProductBasedOnCategoryIdAndProductId(categoryId, productId));
 
     }
+
+    @GetMapping(value = "/{categoryId}/product")
+    public ResponseEntity<List<ProductDto>> getAllProductBasedOnCategoryId(
+            @PathVariable Integer categoryId) {
+        List<ProductDto> productDtoList = productServiceImpl.getProductBasedOnCategoryId(categoryId);
+        return ResponseEntity.ok(productDtoList);
+    }
+
     @GetMapping(value = "/products")
-    public ResponseEntity<List<ProductDto>> getAllProducts(){
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
         List<ProductDto> productDtoList = productServiceImpl.getAllProducts();
         return ResponseEntity.ok(productDtoList);
     }
