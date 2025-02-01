@@ -12,6 +12,10 @@ public interface CartRepository extends JpaRepository<Cart,Integer> {
      SELECT CARTITEMS FROM Cart CARTITEMS WHERE  CARTITEMS.userId = :userId
     """;
 
+    String FIND_CARTITEMS_BY_USERID_AND_PRODUCTID= """
+            SELECT CARTITEMS FROM Cart CARTITEMS WHERE CARTITEMS.userId = :userId AND CARTITEMS.productId = :productId
+            """;
+
 //    String DELETE_CART_ITEMS_BY_USERID = """
 //            DELETE FROM Cart CARTITEMS WHERE CARTITEMS.userId = :userId
 //            """;
@@ -20,6 +24,9 @@ public interface CartRepository extends JpaRepository<Cart,Integer> {
 
     @Query(value = FIND_CARTITEMS_BY_USERID_WITH_PRODUCTS)
     List<Cart> findByUserId(Integer userId);
+
+    @Query(value = FIND_CARTITEMS_BY_USERID_AND_PRODUCTID)
+    Cart findByUserIdAndProductId(Integer userId, Integer productId);
 
 //    @Query(value = DELETE_CART_ITEMS_BY_USERID)
 //    void deleteByUserId(Integer userId);

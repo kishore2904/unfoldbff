@@ -12,19 +12,19 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cartId;
 
-    @Column(name="user_id",nullable = false,unique = true)
+    @Column(name="user_id")
     private Integer userId;
 
-    @Column(name="product_id",nullable = false)
+    @Column(name="product_id")
     private Integer productId;
 
-    @Column(name="quantity",nullable = false)
+    @Column(name="quantity")
     private Integer quantity;
 
     @Column(name="variant_id",nullable = false)
     private Integer variantId;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
     public Integer getCartId() {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/rest/unfold")
+@RequestMapping(value = "/rest/unfold")
 public class ProductVariantController {
 
     private final ProductVariantServiceImpl productVariantServiceImpl;
@@ -19,13 +19,13 @@ public class ProductVariantController {
         this.productVariantServiceImpl = productVariantServiceImpl;
     }
 
-    @PostMapping(value="/productVariant")
+    @PostMapping(value = "/productVariant")
     public ResponseEntity<Void> createProductVariant(@RequestBody ProductVariantDto productVariantDto) {
         productVariantServiceImpl.create(productVariantDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping(value="/allProductVariants")
+    @GetMapping(value = "/allProductVariants")
     public ResponseEntity<List<ProductVariantDto>> getAllProductVariants() {
         return ResponseEntity.ok(productVariantServiceImpl.getAllProductVariants());
     }
@@ -37,8 +37,8 @@ public class ProductVariantController {
 
     @PutMapping("/{variantId}/productVariant")
     public ResponseEntity<Void> updateProductVariant(@PathVariable Long variantId,
-      @RequestBody ProductVariantDto productVariantDto) {
-        productVariantServiceImpl.update(variantId,productVariantDto);
+                                                     @RequestBody ProductVariantDto productVariantDto) {
+        productVariantServiceImpl.update(variantId, productVariantDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
