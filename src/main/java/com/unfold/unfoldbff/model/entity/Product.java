@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -41,8 +42,19 @@ public class Product implements Serializable {
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
     private Category category;
 
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<ProductVariant> variants;
+
     public Integer getProductId() {
         return productId;
+    }
+
+    public List<ProductVariant> getVariants() {
+        return variants;
+    }
+
+    public void setVariants(List<ProductVariant> variants) {
+        this.variants = variants;
     }
 
     public void setProductId(Integer productId) {
