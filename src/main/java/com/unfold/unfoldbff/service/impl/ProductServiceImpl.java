@@ -9,6 +9,7 @@ import com.unfold.unfoldbff.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl {
@@ -74,5 +75,11 @@ public class ProductServiceImpl {
     public List<ProductDto> getProductBasedOnCategoryId(Integer categoryId) {
         List<Product> productList = productRepository.findProductByCategoryId(categoryId);
         return productMapper.convertToProductDtoList(productList);
+    }
+
+    public ProductDto getProductDetails(Integer productId) {
+        Product product = productRepository.findByProductId(productId);
+        return productMapper.convertToProductDto(product);
+
     }
 }

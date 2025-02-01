@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
@@ -15,6 +16,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     String FIND_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID = """
             SELECT PRODUCTDETAILS FROM Product PRODUCTDETAILS WHERE
             PRODUCTDETAILS.productId = :productId AND PRODUCTDETAILS.categoryId = :categoryId
+            """;
+    String FIND_PRODUCT_BY_PRODUCT_ID = """
+            SELECT PRODUCTDETAILS FROM Product PRODUCTDETAILS WHERE
+            PRODUCTDETAILS.productId = :productId
             """;
 
     String UPDATE_PRODUCT_BY_CATEGORY_AND_PRODUCT_ID = """
@@ -55,4 +60,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = SELECT_PRODUCT_BY_CATEGORY_ID)
     List<Product> findProductByCategoryId(@Param("categoryId") Integer categoryId);
 
+    Product findByProductId(Integer productId);
 }

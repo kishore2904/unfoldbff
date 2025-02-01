@@ -8,38 +8,37 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product implements Serializable {
 
     @Id
-    @Column(name ="product_id",nullable = false)
+    @Column(name = "product_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
 
-    @Column(name="name",nullable = false,length=150)
+    @Column(name = "name", nullable = false, length = 150)
     private String productName;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String productDescription;
 
-    @Column(name="price",nullable = false)
+    @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name="stock_quantity")
+    @Column(name = "stock_quantity")
     private Integer stockQuantity;
 
-    @Column(name="category_id",nullable = false)
+    @Column(name = "category_id", nullable = false)
     private Integer categoryId;
 
-    @Column(name="image_url",length = 500)
+    @Column(name = "image_url", length = 500)
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id",referencedColumnName = "category_id",
-    insertable = false,updatable = false)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
     private Category category;
 
     public Integer getProductId() {

@@ -22,10 +22,10 @@ public interface CategoryMapper {
 
     List<CategoryDto> convertToCategoryDto(List<Category> categoryList);
 
-    default List<CategoryDto> convertToCategoryDtoWithProduct(List<Category> categoryList){
+    default List<CategoryDto> convertToCategoryDtoWithProduct(List<Category> categoryList) {
 
         List<CategoryDto> categoryDtos = new ArrayList<>();
-        for(Category category : categoryList){
+        for (Category category : categoryList) {
             CategoryDto categoryDto = new CategoryDto();
             categoryDto.setCategoryId(category.getCategoryId());
             categoryDto.setCategoryName(category.getCategoryName());
@@ -33,13 +33,13 @@ public interface CategoryMapper {
             categoryDto.setProductDtos(convertToProductDto(category.getProducts()));
             categoryDtos.add(categoryDto);
         }
-       return categoryDtos;
+        return categoryDtos;
     }
 
-    default List<ProductDto> convertToProductDto(List<Product> productList){
+    default List<ProductDto> convertToProductDto(List<Product> productList) {
 
         List<ProductDto> productDtos = new ArrayList<>();
-        for(Product product: productList){
+        for (Product product : productList) {
             ProductDto productDto = new ProductDto();
             productDto.setCategoryId(product.getCategoryId());
             productDto.setProductDescription(product.getProductDescription());
@@ -51,11 +51,11 @@ public interface CategoryMapper {
             productDtos.add(productDto);
 
         }
-        return  productDtos;
+        return productDtos;
     }
 
     @Mapping(source = "categoryId", target = "categoryId")
-    @Mapping(source = "categoryName",target = "categoryName")
+    @Mapping(source = "categoryName", target = "categoryName")
     @Mapping(source = "parentCategoryId", target = "parentCategoryId")
     Category convertToCategory(CategoryDto categoryDto);
 }
