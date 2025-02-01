@@ -8,7 +8,7 @@ import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = ProductVariantMapper.class)
 public interface ProductMapper {
 
     @Mapping(source = "productId", target = "productId")
@@ -17,6 +17,7 @@ public interface ProductMapper {
     @Mapping(source = "price", target = "price")
     @Mapping(source = "stockQuantity", target = "stockQuantity")
     @Mapping(source = "imageUrl", target = "imageUrl")
+    @Mapping(source = "variants", target = "productVariantDtos")  // Map variants to productVariantDtos
     ProductDto convertToProductDto(Product product);
 
     @Mapping(source = "productId", target = "productId")

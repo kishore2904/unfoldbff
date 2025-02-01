@@ -26,9 +26,20 @@ public class ProductVariant {
 
     @Column(name = "stock_quantity", nullable = false)
     private Integer stockQuantity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", referencedColumnName = "product_id", insertable = false, updatable = false)
+    private Product product;
 
     public Long getVariantId() {
         return variantId;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public void setVariantId(Long variantId) {

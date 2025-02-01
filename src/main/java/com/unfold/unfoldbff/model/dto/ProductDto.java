@@ -1,14 +1,26 @@
 package com.unfold.unfoldbff.model.dto;
 
+import java.util.List;
+
 public class ProductDto {
 
     private Integer productId;
     private String productName;
     private String productDescription;
     private Double price;
+
+    public List<ProductVariantDto> getProductVariantDtos() {
+        return productVariantDtos;
+    }
+
+    public void setProductVariantDtos(List<ProductVariantDto> productVariantDtos) {
+        this.productVariantDtos = productVariantDtos;
+    }
+
     private Integer stockQuantity;
     private Integer categoryId;
     private String imageUrl;
+    private List<ProductVariantDto> productVariantDtos;
 
     public Integer getProductId() {
         return productId;

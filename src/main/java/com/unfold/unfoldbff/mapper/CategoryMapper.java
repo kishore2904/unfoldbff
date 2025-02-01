@@ -1,10 +1,11 @@
 package com.unfold.unfoldbff.mapper;
 
-
 import com.unfold.unfoldbff.model.dto.CategoryDto;
 import com.unfold.unfoldbff.model.dto.ProductDto;
+import com.unfold.unfoldbff.model.dto.ProductVariantDto;
 import com.unfold.unfoldbff.model.entity.Category;
 import com.unfold.unfoldbff.model.entity.Product;
+import com.unfold.unfoldbff.model.entity.ProductVariant;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -48,10 +49,26 @@ public interface CategoryMapper {
             productDto.setImageUrl(product.getImageUrl());
             productDto.setPrice(product.getPrice());
             productDto.setStockQuantity(product.getStockQuantity());
+            productDto.setProductVariantDtos(convertToProductVariantDto(product.getVariants())); // Include variants here
             productDtos.add(productDto);
-
         }
         return productDtos;
+    }
+
+    default List<ProductVariantDto> convertToProductVariantDto(List<ProductVariant> productVariants) {
+
+        List<ProductVariantDto> productVariantDtos = new ArrayList<>();
+        for (ProductVariant productVariant : productVariants) {
+            ProductVariantDto productVariantDto = new ProductVariantDto();
+            productVariantDto.setVariantId(productVariant.getVariantId());
+            productVariantDto.setProductId(productVariant.getProductId());
+            productVariantDto.setColorId(productVariant.getColorId());
+            productVariantDto.setSizeId(productVariant.getSizeId());
+            productVariantDto.setPrice(productVariant.getPrice());
+            productVariantDto.setStockQuantity(productVariant.getStockQuantity());
+            productVariantDtos.add(productVariantDto);
+        }
+        return productVariantDtos;
     }
 
     @Mapping(source = "categoryId", target = "categoryId")
