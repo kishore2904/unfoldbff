@@ -5,32 +5,33 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="order")
+@Table(name = "order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")  
     private Integer orderId;
 
-    @Column(nullable = false)
+    @Column(name = "user_id")  
     private Integer userId;
 
-    @Column(nullable = false)
+    @Column(name = "order_date")  
     private LocalDate orderDate;
 
-    @Column(nullable = false)
+    @Column(name = "status")  
     private String status;
 
-    @Column(nullable = false)
+    @Column(name = "totalPrice")  
     private Double totalPrice;
 
-    @Column(nullable = false)
+    @Column(name = "paymentStatus")  
     private String paymentStatus;
 
-    @Column(nullable = false)
+    @Column(name = "shippingAddress")  
     private String shippingAddress;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "createdAt", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")  
     private LocalDateTime createdAt;
 
     public Integer getOrderId() {

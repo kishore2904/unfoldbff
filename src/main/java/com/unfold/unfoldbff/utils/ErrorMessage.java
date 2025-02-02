@@ -9,6 +9,7 @@ public class ErrorMessage {
     public static final String USER_NOT_FOUND = "USER_NOT_FOUND";
     public static final String INVALID_COUPON = "INVALID_COUPON";
     public static final String COUPON_ALREADY_EXIST = "COUPON_ALREADY_EXIST";
+    public static final String PRODUCT_ALREADY_EXIST = "PRODUCT_ALREADY_EXIST_IN_WISHLIST";
 
     public enum ErrorCodeConstants {
         DATA_NOT_FOUND("A001", "UserName Not Found", HttpStatus.NOT_FOUND),
