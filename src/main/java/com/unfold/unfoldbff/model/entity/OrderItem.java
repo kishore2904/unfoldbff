@@ -8,24 +8,25 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
     private Integer orderItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "variantId")
+    @JoinColumn(name = "variant_id")
     private ProductVariant productVariant;
 
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "priceAtTimeOfOrder")
+    @Column(name = "price_at_time_of_order")
     private Double priceAtTimeOfOrder;
 
     public Integer getOrderItemId() {

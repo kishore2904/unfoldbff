@@ -1,4 +1,4 @@
-package com.unfold.unfoldbff.model;
+package com.unfold.unfoldbff.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

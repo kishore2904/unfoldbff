@@ -5,12 +5,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")  
+    @Column(name = "order_id")
     private Integer orderId;
 
     @Column(name = "user_id")  
@@ -22,16 +22,16 @@ public class Order {
     @Column(name = "status")  
     private String status;
 
-    @Column(name = "totalPrice")  
+    @Column(name = "total_price")
     private Double totalPrice;
 
-    @Column(name = "paymentStatus")  
+    @Column(name = "payment_status")
     private String paymentStatus;
 
-    @Column(name = "shippingAddress")  
+    @Column(name = "shipping_address")
     private String shippingAddress;
 
-    @Column(name = "createdAt", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")  
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
     public Integer getOrderId() {
