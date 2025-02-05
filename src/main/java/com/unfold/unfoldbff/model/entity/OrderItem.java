@@ -45,11 +45,11 @@ public class OrderItem {
         this.order = order;
     }
 
-    public Product getProduct() {
+    public Product getProduct() { // 🔹 Updated method name
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Product product) { // 🔹 Updated method name
         this.product = product;
     }
 

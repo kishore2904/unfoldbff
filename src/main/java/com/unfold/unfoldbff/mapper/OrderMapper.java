@@ -8,27 +8,13 @@ import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", uses = OrderItemsMapper.class, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface OrderMapper {
 
-    @Mapping(source = "orderId", target = "orderId")
-    @Mapping(source = "userId", target = "userId")
-    @Mapping(source = "orderDate", target = "orderDate")
-    @Mapping(source = "status", target = "status")
-    @Mapping(source = "paymentStatus", target = "paymentStatus")
-    @Mapping(source = "totalPrice", target = "totalPrice")
-    @Mapping(source = "shippingAddress", target = "shippingAddress")
-    @Mapping(source = "createdAt", target = "createdAt")
+    @Mapping(source = "orderItemDtos", target = "orderItems") // ✅ Correct mapping using OrderItemsMapper
     Order convertToOrder(OrderDto orderDto);
 
-    @Mapping(source = "orderId", target = "orderId")
-    @Mapping(source = "userId", target = "userId")
-    @Mapping(source = "orderDate", target = "orderDate")
-    @Mapping(source = "status", target = "status")
-    @Mapping(source = "paymentStatus", target = "paymentStatus")
-    @Mapping(source = "totalPrice", target = "totalPrice")
-    @Mapping(source = "shippingAddress", target = "shippingAddress")
-    @Mapping(source = "createdAt", target = "createdAt")
+    @Mapping(source = "orderItems", target = "orderItemDtos") // ✅ Correct mapping using OrderItemsMapper
     OrderDto convertToOrderDto(Order order);
 
     List<OrderDto> convertToOrderDto(List<Order> orders);
