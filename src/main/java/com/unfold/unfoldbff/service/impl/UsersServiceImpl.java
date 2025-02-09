@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -57,6 +58,12 @@ public class UsersServiceImpl implements UsersService {
         adminUser.setRoles(adminRoles);
         usersRepository.save(adminUser);
     }
+
+    @Override
+    public Optional<Users> getUserDetails(Long userId) {
+        return usersRepository.findById(userId);
+    }
+
     public String getEncodedPassword(String password){
         return passwordEncoder.encode(password);
     }

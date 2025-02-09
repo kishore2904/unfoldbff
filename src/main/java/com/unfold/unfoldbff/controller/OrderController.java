@@ -23,7 +23,7 @@ public class OrderController {
         return ResponseEntity.ok(orderServiceImpl.findAll());
     }
 
-    @GetMapping("/{orderId}")
+    @GetMapping("/order/{orderId}")
     public ResponseEntity<OrderDto> findOrderByOrderId(@PathVariable Integer orderId) {
         return ResponseEntity.ok(orderServiceImpl.findById(orderId));
     }
@@ -33,20 +33,20 @@ public class OrderController {
         return ResponseEntity.ok(orderServiceImpl.findByUserId(userId));
     }
 
-    @GetMapping("/{status}")
+    @GetMapping("/order/{status}")
     public ResponseEntity<List<OrderDto>> findOrderByStatus(@PathVariable String status) {
         return ResponseEntity.ok(orderServiceImpl.findByStatus(status));
     }
 
-    @GetMapping("/{paymentStatus}")
+    @GetMapping("/order/{paymentStatus}")
     public ResponseEntity<List<OrderDto>> findOrderByPaymentStatus(@PathVariable String paymentStatus) {
         return ResponseEntity.ok(orderServiceImpl.findByPaymentStatus(paymentStatus));
     }
 
     @PostMapping("/orders")
-    ResponseEntity<Void> createOrder(@RequestBody OrderDto orderDto) {
-        orderServiceImpl.create(orderDto);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto orderDto) {
+
+        return ResponseEntity.ok(orderServiceImpl.create(orderDto));
     }
 
     @PostMapping(value = "/orders/{orderId}")

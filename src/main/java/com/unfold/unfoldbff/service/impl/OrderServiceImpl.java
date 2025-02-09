@@ -21,9 +21,10 @@ public class OrderServiceImpl {
         this.orderMapper = orderMapper;
     }
 
-    public void create(OrderDto orderDto){
+    public OrderDto create(OrderDto orderDto){
         Order order = orderMapper.convertToOrder(orderDto);
-        orderRepository.save(order);
+        order =  orderRepository.save(order);
+        return orderMapper.convertToOrderDto(order);
     }
 
     public List<OrderDto> findAll(){

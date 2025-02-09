@@ -8,10 +8,9 @@ import com.unfold.unfoldbff.service.impl.JwtService;
 import com.unfold.unfoldbff.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 import static com.unfold.unfoldbff.utils.Constants.PROD_URL;
 
@@ -31,6 +30,11 @@ public class UserController {
     @PostMapping(Constants.REGISTER_NEW_USER)
     public Users registerNewUser(@RequestBody Users users) {
         return usersService.requestNewUser(users);
+    }
+
+    @GetMapping(Constants.USER_DETAIL)
+    public Optional<Users> getUserDetails(@RequestParam Long userId){
+        return usersService.getUserDetails(userId);
     }
     @PostMapping(Constants.LOGIN)
     public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws UsernameNotFoundException {

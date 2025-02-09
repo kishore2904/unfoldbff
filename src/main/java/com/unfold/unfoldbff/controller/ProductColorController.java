@@ -30,7 +30,7 @@ public class ProductColorController {
         return ResponseEntity.ok(productColorServiceImpl.getAllProductColors());
     }
 
-    @GetMapping("/{productColorId}")
+    @GetMapping("/productColor/{productColorId}")
     public ResponseEntity<ProductColorDto> getProductColorById(@PathVariable Long productColorId) {
         return ResponseEntity.ok(productColorServiceImpl.getByColorId(productColorId));
     }
