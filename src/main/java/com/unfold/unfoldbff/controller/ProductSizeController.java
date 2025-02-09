@@ -30,7 +30,7 @@ public class ProductSizeController {
         return ResponseEntity.ok(productSizeServiceImpl.getAllProductSizes());
     }
 
-    @GetMapping("/{productSizeId}")
+    @GetMapping("/productSize/{productSizeId}")
     public ResponseEntity<ProductSizeDto> getProductSizeById(@PathVariable Long productSizeId) {
         return ResponseEntity.ok(productSizeServiceImpl.getByProductSizeId(productSizeId));
     }
@@ -42,7 +42,7 @@ public class ProductSizeController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping("/{deleteProductSizeId}")
+    @DeleteMapping("/productSize/{deleteProductSizeId}")
     public ResponseEntity<Void> deleteProductSize(@PathVariable Long deleteProductSizeId) {
         productSizeServiceImpl.delete(deleteProductSizeId);
         return ResponseEntity.noContent().build();
