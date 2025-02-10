@@ -3,8 +3,8 @@ package com.unfold.unfoldbff.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -45,27 +45,12 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductVariant> variants;
 
-    public List<ProductImage> getImages() {
-        return images;
-    }
 
-    public void setImages(List<ProductImage> images) {
-        this.images = images;
-    }
+    // Getters and Setters
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductImage> images;
 
     public Integer getProductId() {
         return productId;
-    }
-
-    public List<ProductVariant> getVariants() {
-        return variants;
-    }
-
-    public void setVariants(List<ProductVariant> variants) {
-        this.variants = variants;
     }
 
     public void setProductId(Integer productId) {
@@ -127,4 +112,13 @@ public class Product implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public List<ProductVariant> getVariants() {
+        return variants;
+    }
+
+    public void setVariants(List<ProductVariant> variants) {
+        this.variants = variants;
+    }
+
 }

@@ -1,6 +1,9 @@
 package com.unfold.unfoldbff.model.dto;
 
+import com.unfold.unfoldbff.model.entity.ProductImage;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ProductVariantDto {
 
@@ -10,6 +13,7 @@ public class ProductVariantDto {
     private Long sizeId;
     private BigDecimal price;
     private Integer stockQuantity;
+    private List<ProductImageDto> productImageDtos;
 
     public Long getVariantId() {
         return variantId;
@@ -57,5 +61,13 @@ public class ProductVariantDto {
 
     public void setStockQuantity(Integer stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public List<ProductImageDto> getProductImageDtos() {
+        return productImageDtos;
+    }
+
+    public void setProductImageDtos(List<ProductImageDto> productImageDtos) {
+        this.productImageDtos = productImageDtos;
     }
 }

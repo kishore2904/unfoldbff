@@ -7,7 +7,13 @@ public class ProductDto {
     private Integer productId;
     private String productName;
     private String productDescription;
-    private Double price;
+    private double price;
+    private Integer stockQuantity;
+    private Integer categoryId;
+    private String imageUrl;
+    private List<ProductVariantDto> productVariantDtos;
+
+    // Getters and Setters
 
     public List<ProductVariantDto> getProductVariantDtos() {
         return productVariantDtos;
@@ -16,11 +22,6 @@ public class ProductDto {
     public void setProductVariantDtos(List<ProductVariantDto> productVariantDtos) {
         this.productVariantDtos = productVariantDtos;
     }
-
-    private Integer stockQuantity;
-    private Integer categoryId;
-    private String imageUrl;
-    private List<ProductVariantDto> productVariantDtos;
 
     public Integer getProductId() {
         return productId;
@@ -46,11 +47,11 @@ public class ProductDto {
         this.productDescription = productDescription;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

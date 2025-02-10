@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ProductVariantRepository extends JpaRepository<ProductVariant,Long> {
     List<ProductVariant> findByProductId(Integer productId);
+
+    void deleteByProductId(Integer productId);
 }

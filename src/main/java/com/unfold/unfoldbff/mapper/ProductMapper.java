@@ -26,6 +26,7 @@ public interface ProductMapper {
     @Mapping(source = "price", target = "price")
     @Mapping(source = "stockQuantity", target = "stockQuantity")
     @Mapping(source = "imageUrl", target = "imageUrl")
+    @Mapping(source = "productVariantDtos", target = "variants")  // Map productVariantDtos to variants
     Product convertToProduct(ProductDto productDto);
 
     List<Product> convertToProduct(List<ProductDto> productDtoList);

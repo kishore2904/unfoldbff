@@ -3,7 +3,6 @@ package com.unfold.unfoldbff.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class Category {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id", referencedColumnName = "category_id",
-            insertable = false,updatable = false)
+            insertable = false, updatable = false)
     private List<Product> products;
 
     public Integer getCategoryId() {
