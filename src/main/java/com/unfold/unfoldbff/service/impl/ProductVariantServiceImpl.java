@@ -35,7 +35,7 @@ public class ProductVariantServiceImpl {
 
     public List<ProductVariantDto> getAllProductVariants() {
         List<ProductVariant> productVariants = productVariantRepository.findAll();
-        return productVariantMapper.convertToProductVariantDto(productVariants);
+        return productVariantMapper.convertToProductVariantDtoList(productVariants);
     }
 
     public void update(Long variantId, ProductVariantDto productVariantDto) {
