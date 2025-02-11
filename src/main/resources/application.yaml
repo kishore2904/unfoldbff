@@ -1,4 +1,17 @@
 spring:
+  thymeleaf:
+    cache: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kishore290499@gmail.com
+    password: xhqfnhetvutumwxu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   web:
     cors:
       allowed-origins: "http://localhost:4200, https://unfold.fit"

@@ -30,7 +30,7 @@ public class ProductVariantController {
         return ResponseEntity.ok(productVariantServiceImpl.getAllProductVariants());
     }
 
-    @GetMapping("/{variantId}")
+    @GetMapping("/variant/{variantId}")
     public ResponseEntity<ProductVariantDto> getProductVariantById(@PathVariable Long variantId) {
         return ResponseEntity.ok(productVariantServiceImpl.getProductVariantById(variantId));
     }

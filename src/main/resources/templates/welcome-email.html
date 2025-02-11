@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Our Store!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Dynamic User Name -->
+    <h1>Welcome, <span th:text="${name}">John Doe</span>!</h1>
+
+    <p>Thank you for signing up with our store. We're excited to have you as part of our community!</p>
+
+    <p>Explore our latest products, and take advantage of exclusive offers just for you.</p>
+
+    <!-- Call to Action Button -->
+    <a href="https://yourwebsite.com" class="button">Shop Now</a>
+
+    <p>If you have any questions or need assistance, feel free to reach out to our support team at any time.</p>
+
+    <p>Best Regards,<br>Your Store Team</p>
+</div>
+</body>
+</html>
