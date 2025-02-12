@@ -55,7 +55,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin(PROD_URL);// Allow frontend
+        configuration.addAllowedOrigin(PROD_URL);
+        configuration.addAllowedOrigin("http://unfold.fit");// Allow frontend
         configuration.addAllowedMethod("*"); // Allow all HTTP methods
         configuration.addAllowedHeader("*"); // Allow all headers
         configuration.setAllowCredentials(true); // Allow credentials (cookies or authorization headers)

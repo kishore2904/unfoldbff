@@ -39,4 +39,24 @@ public class EmailService {
         // Send email
         mailSender.send(message);
     }
+
+    public void sendNewsletterSubscriptionEmail(String toEmail, String name) throws MessagingException {
+        // Prepare the Thymeleaf context
+        Context context = new Context();
+        context.setVariable("name", name);  // Pass dynamic name
+
+        // Process the HTML template with Thymeleaf
+        String htmlContent = templateEngine.process("newsletter-subscription", context);
+
+        // Create the email message
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, StandardCharsets.UTF_8.name());
+
+        helper.setTo(toEmail);
+        helper.setSubject("Welcome to Our Newsletter!");
+        helper.setText(htmlContent, true); // Send HTML content
+
+        // Send the email
+        mailSender.send(message);
+    }
 }
