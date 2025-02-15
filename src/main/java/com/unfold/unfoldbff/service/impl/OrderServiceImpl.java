@@ -9,63 +9,59 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class OrderServiceImpl {
 
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-
 
     public OrderServiceImpl(OrderRepository orderRepository, OrderMapper orderMapper) {
         this.orderRepository = orderRepository;
         this.orderMapper = orderMapper;
     }
 
-    public OrderDto create(OrderDto orderDto){
+    public OrderDto create(OrderDto orderDto) {
         Order order = orderMapper.convertToOrder(orderDto);
-        order =  orderRepository.save(order);
+        order = orderRepository.save(order);
         return orderMapper.convertToOrderDto(order);
     }
 
-    public List<OrderDto> findAll(){
+    public List<OrderDto> findAll() {
         List<Order> orders = orderRepository.findAll();
         return orderMapper.convertToOrderDto(orders);
     }
 
-    public OrderDto findById(Integer orderId){
-        Order order = orderRepository.findById(orderId).get();
+    public OrderDto findById(Integer orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with ID: " + orderId));
         return orderMapper.convertToOrderDto(order);
     }
 
-    public List<OrderDto> findByUserId(Integer userId){
+    public List<OrderDto> findByUserId(Integer userId) {
         List<Order> orders = orderRepository.getOrdersByUserId(userId);
         return orderMapper.convertToOrderDto(orders);
     }
 
-    public List<OrderDto> findByStatus(String status){
+    public List<OrderDto> findByStatus(String status) {
         List<Order> orders = orderRepository.getOrdersByStatus(status);
         return orderMapper.convertToOrderDto(orders);
     }
 
-    public List<OrderDto> findByPaymentStatus(String paymentStatus){
+    public List<OrderDto> findByPaymentStatus(String paymentStatus) {
         List<Order> orders = orderRepository.getOrdersByPaymentStatus(paymentStatus);
         return orderMapper.convertToOrderDto(orders);
     }
 
-    public void update(Integer orderId,OrderDto orderDto) {
+    public void update(Integer orderId, OrderDto orderDto) {
 
         Order order = orderRepository.findById(orderId).get();
 
-        if(order!= null){
-
+        if (order != null) {
             Order updatedOrder = orderMapper.convertToOrder(orderDto);
             orderRepository.save(updatedOrder);
-
         }
     }
 
-    public void delete(Integer orderId){
-
+    public void delete(Integer orderId) {
         orderRepository.deleteById(orderId);
     }
 }

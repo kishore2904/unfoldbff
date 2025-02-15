@@ -33,7 +33,7 @@ public class OrderController {
         return ResponseEntity.ok(orderServiceImpl.findByUserId(userId));
     }
 
-    @GetMapping("/order/{status}")
+    @GetMapping("/order/status/{status}")
     public ResponseEntity<List<OrderDto>> findOrderByStatus(@PathVariable String status) {
         return ResponseEntity.ok(orderServiceImpl.findByStatus(status));
     }
