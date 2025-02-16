@@ -28,7 +28,7 @@ public class OrderController {
         return ResponseEntity.ok(orderServiceImpl.findById(orderId));
     }
 
-    @GetMapping("/order/{userId}")
+    @GetMapping("/order/user/{userId}")
     public ResponseEntity<List<OrderDto>> findOrderByUserId(@PathVariable Integer userId) {
         return ResponseEntity.ok(orderServiceImpl.findByUserId(userId));
     }
